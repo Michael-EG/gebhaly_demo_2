@@ -52,13 +52,13 @@ function Home({productsData, connection_error}: {productsData: Product[], connec
                 {productsData.map((product) => (
                     <Grid flex={1} item md={4} key={product.title}>
                         <Card className={styles.product_card}>
-                            <CardHeader
+                            {/* <CardHeader
                                 subheader={
                                 <Grid container direction='row' flex={1} justifyContent='space-between'>
                                     <Grid item>{product.category}</Grid>
                                     <Grid item>Stock: {product.available}</Grid>
                                 </Grid>}
-                            />
+                            /> */}
                             <NextLink href={`/product/${product.id}`} passHref>
                             <CardMedia
                                 component="img"
@@ -75,7 +75,9 @@ function Home({productsData, connection_error}: {productsData: Product[], connec
                             </CardContent>
                             </NextLink>
                             <CardActions>
+                            <Grid container justifyContent='space-between'>
                             <Typography>$ {product.price.toString()}</Typography>
+                            
                             <Button
                                 size="small"
                                 color="primary"
@@ -83,6 +85,10 @@ function Home({productsData, connection_error}: {productsData: Product[], connec
                             >
                                 Add to Cart
                             </Button>
+                            
+                            <Grid item>Available:{product.available}</Grid>
+                            </Grid>
+                            
                             </CardActions>
                         </Card>
                     </Grid>
